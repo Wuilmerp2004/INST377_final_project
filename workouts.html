@@ -9,7 +9,57 @@
       padding: 20px;
       text-align: center;
     }
+     
+    .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 15px 40px;
+}
 
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 30px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .navbar {
+      justify-content: space-between; 
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0 auto; 
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #6a0dad;
+    }
+        
+        
     h1 {
       margin-bottom: 30px;
     }
@@ -39,6 +89,18 @@
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="terpfit.png" alt="TerpFit Logo" />
+      <span>TerpFit</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="workouts.html">WORKOUTS</a></li>
+      <li><a href="nutrition.html">NUTRITION</a></li>
+    </ul>
+  </nav>
+  
   <h1>Choose a Muscle Group</h1>
   <div class="grid" id="muscleGrid"></div>
 
