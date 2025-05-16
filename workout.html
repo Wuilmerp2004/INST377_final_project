@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout Board</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      width: 180px;
+      text-align: center;
+      cursor: pointer;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    .card:hover {
+      background-color: #e6e6e6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose a Muscle Group</h1>
+  <div class="grid" id="muscleGrid"></div>
+
+  <script>
+    const muscles = [
+      "abdominals", "abductors", "adductors",
+      "biceps", "calves", "chest",
+      "forearms", "glutes", "hamstrings",
+      "lats", "lower_back", "middle_back",
+      "neck", "quadriceps", "traps", "triceps"
+    ];
+
+    const formatName = (name) => {
+      return name.replace("_", " ").replace(/\b\w/g, c => c.toUpperCase());
+    };
+
+    const grid = document.getElementById('muscleGrid');
+
+    muscles.forEach(muscle => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerText = formatName(muscle);
+      card.onclick = () => {
+        window.location.href = `muscle.html?muscle=${muscle}`;
+      };
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

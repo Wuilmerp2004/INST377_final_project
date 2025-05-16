@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercises</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f8f8f8;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .exercise-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .exercise-card button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .exercise-card button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Exercises</h1>
+  <div id="exerciseList">Loading...</div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const muscle = urlParams.get('muscle');
+
+    document.getElementById('title').innerText =
+      `Exercises for ${muscle.charAt(0).toUpperCase() + muscle.slice(1)}`;
+
+    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
+      headers: { 'X-Api-Key': 'XSXbUh2hqi07VGFtjIsh0E4EVV7w54Jv3C1nroNY' } 
+    })
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('exerciseList');
+      container.innerHTML = '';
+
+      data.slice(0, 10).forEach(ex => {
+        const div = document.createElement('div');
+        div.className = 'exercise-card';
+
+        const workout = {
+          name: ex.name,
+          type: ex.type,
+          equipment: ex.equipment,
+          difficulty: ex.difficulty,
+          instructions: ex.instructions,
+          muscle: muscle
+        };
+
+        div.innerHTML = `
+          <h3>${workout.name}</h3>
+          <p><strong>Type:</strong> ${workout.type}</p>
+          <p><strong>Equipment:</strong> ${workout.equipment}</p>
+          <p><strong>Difficulty:</strong> ${workout.difficulty}</p>
+          <p>${workout.instructions}</p>
+        `;
+
+        const saveButton = document.createElement('button');
+        saveButton.textContent = '♥ Save';
+        saveButton.onclick = () => saveToFavorites(workout);
+
+        div.appendChild(saveButton);
+        container.appendChild(div);
+      });
+    })
+    .catch(err => {
+      document.getElementById('exerciseList').innerText = 'Failed to load exercises.';
+      console.error(err);
+    });
+
+    // Placeholder for favorite saving logic
+    function saveToFavorites(workout) {
+      alert(`Saved: ${workout.name}`);
+      // Replace with Supabase insert logic here
+    }
+  </script>
+</body>
+</html>
