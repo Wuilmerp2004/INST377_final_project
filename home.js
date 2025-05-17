@@ -1,32 +1,49 @@
-
-// Workout of the Day Javascript
+// Workout of the Day JavaScript
 const weeklyWorkouts = {
-    0: "🧘 Sunday Stretch & Recovery",             
-    1: "🏋️ Push Day – Chest, Shoulders, Triceps", 
-    2: "🏃 Cardio and Abs",                  
-    3: "💪 Pull Day – Back & Biceps",              
-    4: "🦵 Lower Body Strength – Quad and Glute Focused",  
-    5: "Upper Day- Chest,Shoulders,Triceps,Back, Biceps",                  
-    6: "Cardio and Abs"           
+    0: "Sunday:Stretch & Recovery",
+    1: "Monday:Push Day – Chest, Shoulders, Triceps",
+    2: "Tuesday:Cardio and Abs",
+    3: "Wednesday:Pull Day – Back & Biceps",
+    4: "Thursday:Lower Body Strength – Quad and Glute Focused",
+    5: "Friday:Upper Day – Chest, Shoulders, Triceps, Back, Biceps",
+    6: "Saturday:Cardio and Abs"
   };
   
-  
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const today = new Date().getDay();
-  const workoutText = weeklyWorkouts[today];
-  
   
   const wrapper = document.getElementById('daily-workout-wrapper');
-  const slide = document.createElement('div');
-  slide.className = 'swiper-slide';
-  slide.textContent = workoutText;
-  wrapper.appendChild(slide);
   
+  for (let i = 0; i < 7; i++) {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
   
-  new Swiper('.swiper', {
+    const image = document.createElement('img');
+    image.src = `${dayNames[i]}.png`;
+    image.alt = `${dayNames[i]} workout`;
+  
+    const text = document.createElement('p');
+    text.textContent = weeklyWorkouts[i];
+  
+    slide.appendChild(image);
+    slide.appendChild(text);
+    wrapper.appendChild(slide);
+  }
+  
+  // Initialize Swiper
+  const swiper = new Swiper('.swiper', {
+    initialSlide: today,
+    loop: true,
     pagination: {
       el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
   });
+  
   
 
 ///Quote of the day 
