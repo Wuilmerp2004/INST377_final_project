@@ -135,12 +135,6 @@
           <p><strong>Difficulty:</strong> ${workout.difficulty}</p>
           <p>${workout.instructions}</p>
         `;
-
-        const saveButton = document.createElement('button');
-        saveButton.textContent = '♥ Save';
-        saveButton.onclick = () => saveToFavorites(workout);
-
-        div.appendChild(saveButton);
         container.appendChild(div);
       });
     })
