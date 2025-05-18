@@ -4,27 +4,27 @@ Project Description
 TerpFit is a  a website centered around fitness and it's  built to motivate and guide users on their health and wellness journey. It provides structured weekly workout plans with daily themes such as strength, cardio, mobility, and mindfulness. The goal is to inspire consistency, resilience, and a healthy lifestyle through a supportive web interface. 
 
 APIS:
--quotes: (https://api.api-ninjas.com/v1/quotes)
--exercise: (https://api.api-ninjas.com/v1/quotes)
-- nutrition: Nutritionix API
+quotes: (https://api.api-ninjas.com/v1/quotes)
+exercise: (https://api.api-ninjas.com/v1/quotes)
+nutrition: Nutritionix API
 
 
 Libraries:
--Swiper.js
--Chart.js
+Swiper.js
+Chart.js
 
 Users can explore workouts, view motivational quotes, and learn more about the mission and creators of TerpFit via the website's sections: Home, About, Workouts, and Nutrition.
 Page Descriptions:
 1. Home Page (home.html)
 The Home page serves as the main landing page for TerpFit. It features:
-- A navigation bar with links to all major sections of the site
-- A daily workout slider powered by Swiper.js, which dynamically displays workout routines using JavaScript (home.js) 
-- A "Quote of the Day" section that displays motivational quotes  to inspire users.
+ A navigation bar with links to all major sections of the site
+A daily workout slider powered by Swiper.js, which dynamically displays workout routines using JavaScript (home.js) 
+A "Quote of the Day" section that displays motivational quotes  to inspire users.
 
 2. About Page (about.html)
 The About page provides:
-- A welcoming message introducing TerpFit's mission — promoting healthy habits and mental well-being through structured fitness plans.
-- A detailed "Our Team" section featuring the creators of TerpFit:
+A welcoming message introducing TerpFit's mission — promoting healthy habits and mental well-being through structured fitness plans.
+A detailed "Our Team" section featuring the creators of TerpFit:
 Chris Agyekum — CEO & Founder
 Wuilmer Palacios — CEO & Founder
 
