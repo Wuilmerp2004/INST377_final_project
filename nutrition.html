@@ -1,81 +1,8 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nutrition</title>
-  <style>
-
-    .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: black;
-  color: white;
-  padding: 15px 40px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  width: 30px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.logo span {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.navbar {
-  justify-content: space-between; 
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 40px;
-  margin: 0 auto; 
-  padding: 0;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-  color: #6a0dad;
-}
-
-  </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">
-          <img src="terpfit.png" alt="TerpFit Logo" />
-          <span>TerpFit</span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="home.html">HOME</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="workouts.html">WORKOUTS</a></li>
-          <li><a href="nutrition.html">NUTRITION</a></li>
-        </ul>
-      </nav>
-</body>
-</html>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nutrition Lookup</title>
+  <title>Nutrition</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -84,12 +11,59 @@
       padding: 40px;
       text-align: center;
     }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      color: white;
+      padding: 15px 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 30px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #6a0dad;
+    }
+
     input, button {
       font-size: 16px;
       padding: 10px;
       margin: 10px;
       width: 300px;
     }
+
     .results {
       max-width: 700px;
       margin: 30px auto;
@@ -99,21 +73,50 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: left;
     }
+
     .food-item {
       border-bottom: 1px solid #ddd;
       margin-bottom: 15px;
       padding-bottom: 10px;
     }
+
+    .food-item button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .food-item button:hover {
+      background-color: darkred;
+    }
+
     .chart-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px;
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="terpfit.png" alt="TerpFit Logo" />
+      <span>TerpFit</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="workouts.html">WORKOUTS</a></li>
+      <li><a href="nutrition.html">NUTRITION</a></li>
+    </ul>
+  </nav>
 
   <h1>Nutrition Lookup</h1>
   <p>Type a food description below (e.g. "2 eggs and a banana")</p>
@@ -127,11 +130,15 @@
   </div>
 
   <script>
-    const appId = "462452e1";   
-    const appKey = "f0306ebb3a435a50175a09881c7fda0e"; 
+    const appId = "462452e1";
+    const appKey = "f0306ebb3a435a50175a09881c7fda0e";
     let latestFoods = [];
     let chartInstance;
 
+    const supabaseClient = supabase.createClient(
+      "https://bvcmvxdwhvinihzhrdkn.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2Y212eGR3aHZpbmloemhyZGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDI5NjIsImV4cCI6MjA2MzE3ODk2Mn0.edO5IwDOV-3Tl-sc8u6lLsHYMfRPstgeUdHHUpMw4_g"
+    );
     async function searchNutrition() {
       const input = document.getElementById("foodInput").value.trim();
       const resultDiv = document.getElementById("nutritionResult");
@@ -190,10 +197,21 @@
             <p><strong>Fat:</strong> ${food.nf_total_fat} g</p>
             <p><strong>Carbs:</strong> ${food.nf_total_carbohydrate} g</p>
           `;
+
           resultDiv.appendChild(item);
         });
+        const saveAllBtn = document.createElement("button");
+          saveAllBtn.textContent = "♥ Save All to Favorites";
+          saveAllBtn.style.marginTop = "20px";
+          saveAllBtn.style.padding = "10px";
+          saveAllBtn.style.backgroundColor = "darkgreen";
+          saveAllBtn.style.color = "white";
+          saveAllBtn.style.border = "none";
+          saveAllBtn.style.borderRadius = "5px";
+          saveAllBtn.style.cursor = "pointer";
+          saveAllBtn.onclick = saveAllFoodsToSupabase;
+          resultDiv.appendChild(saveAllBtn);
 
-        
         const macroLabels = ["Protein (g)", "Fat (g)", "Carbs (g)", "Calories (kcal)"];
         const macroValues = [
           totalProtein,
@@ -202,40 +220,61 @@
           totalCals
         ];
 
-chartInstance = new Chart(chartCanvas, {
-  type: "pie",
-  data: {
-    labels: macroLabels,
-    datasets: [
-      {
-        data: macroValues,
-        backgroundColor: [
-          "rgba(75, 192, 192, 0.6)",   
-          "rgba(255, 99, 132, 0.6)",   
-          "rgba(255, 206, 86, 0.6)",   
-          "rgba(153, 102, 255, 0.6)"   
-        ]
-      }
-    ]
-  },
-  options: {
-    responsive: false,
-    plugins: {
-      title: {
-        display: true,
-        text: "Macronutrient Breakdown (Total of All Foods)"
-      }
-    }
-  }
-});
+        chartInstance = new Chart(chartCanvas, {
+          type: "pie",
+          data: {
+            labels: macroLabels,
+            datasets: [{
+              data: macroValues,
+              backgroundColor: [
+                "rgba(75, 192, 192, 0.6)",
+                "rgba(255, 99, 132, 0.6)",
+                "rgba(255, 206, 86, 0.6)",
+                "rgba(153, 102, 255, 0.6)"
+              ]
+            }]
+          },
+          options: {
+            responsive: false,
+            plugins: {
+              title: {
+                display: true,
+                text: "Macronutrient Breakdown (Total of All Foods)"
+              }
+            }
+          }
+        });
 
-     } catch (err) {
+      } catch (err) {
         resultDiv.innerText = "An error occurred while fetching data.";
         console.error(err);
       }
     }
-  </script>
 
+    async function saveAllFoodsToSupabase() {
+      for (const food of latestFoods) {
+        const { data, error } = await supabaseClient.from("nutrition_favorite").insert([
+          {
+            food_name: food.food_name,
+            calories: food.nf_calories,
+            protein: food.nf_protein,
+            fat: food.nf_total_fat,
+            carbs: food.nf_total_carbohydrate,
+            quantity: `${food.serving_qty} ${food.serving_unit}`
+          }
+        ]);
+    
+        if (error) {
+          console.error("Supabase Save Error:", error);
+          alert(`Failed to save ${food.food_name}`);
+        } else {
+          console.log(`Saved: ${food.food_name}`);
+        }
+      }
+      alert("All items saved to favorites.");
+    }
+  </script>
 </body>
 </html>
+
 

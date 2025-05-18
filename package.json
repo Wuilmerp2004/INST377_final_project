@@ -1,0 +1,25 @@
+{
+  "name": "inst377_final_project-1",
+  "version": "1.0.0",
+  "description": "TerpFit: Project Description TerpFit is a  a website centered around fitness and it's  built to motivate and guide users on their health and wellness journey. It provides structured weekly workout plans with daily themes such as strength, cardio, mobility, and mindfulness. The goal is to inspire consistency, resilience, and a healthy lifestyle through a supportive web interface.",
+  "main": "home.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wuilmerp2004/INST377_final_project.git"
+  },
+  "author": "Wuilmer Palacios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wuilmerp2004/INST377_final_project/issues"
+  },
+  "homepage": "https://github.com/Wuilmerp2004/INST377_final_project#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}
