@@ -42,4 +42,4 @@ Android Chrome (version 90+)
 Desktop browsers: Chrome, Firefox, Safari, and Edge
 
 The layout is responsive and works across mobile, laptops, tablet, and desktop devices.
-
+Link to DeveloperManual.md: 
