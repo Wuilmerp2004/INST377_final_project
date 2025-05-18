@@ -9,8 +9,8 @@ cd INST377_final_project
 Make sure Node.js is installed
 
 This project uses:
-    @supabase/supabase-js – for backend data storage
-   
+@supabase/supabase-js – for backend data storage
+    
 Running the App: 
 Running the App uses HTML, CSS, JavaScript
 You can launch it in a browser or use a simple local server.
