@@ -1,6 +1,5 @@
-<html lang="en">
+<html >
 <head>
-  <meta charset="UTF-8">
   <title>Exercises</title>
   <style>
     body {
@@ -108,14 +107,20 @@
       `Exercises for ${muscle.charAt(0).toUpperCase() + muscle.slice(1)}`;
 
     fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
-      headers: { 'X-Api-Key': 'XSXbUh2hqi07VGFtjIsh0E4EVV7w54Jv3C1nroNY' } 
+      headers: { 'X-Api-Key': 'hVP3rNUpTSLXz6BR1LEDntSUTiXkf0nZqRk615YT' } 
     })
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('exerciseList');
       container.innerHTML = '';
 
-      data.slice(0, 10).forEach(ex => {
+      if (!Array.isArray(data)) {
+       console.error("API did not return an array:", data);
+       container.innerText = "Failed to load exercises. Please try again later.";
+         return;
+        }
+
+  data.slice(0, 10).forEach(ex => {
         const div = document.createElement('div');
         div.className = 'exercise-card';
 
