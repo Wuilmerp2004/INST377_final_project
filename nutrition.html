@@ -102,6 +102,7 @@
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="config.js"></script>
 </head>
 <body>
   <nav class="navbar">
@@ -135,10 +136,8 @@
     let latestFoods = [];
     let chartInstance;
 
-    const supabaseClient = supabase.createClient(
-      "https://bvcmvxdwhvinihzhrdkn.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2Y212eGR3aHZpbmloemhyZGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDI5NjIsImV4cCI6MjA2MzE3ODk2Mn0.edO5IwDOV-3Tl-sc8u6lLsHYMfRPstgeUdHHUpMw4_g"
-    );
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    
     async function searchNutrition() {
       const input = document.getElementById("foodInput").value.trim();
       const resultDiv = document.getElementById("nutritionResult");
@@ -299,7 +298,7 @@
         item.className = "food-item";
         item.innerHTML = `
           <h3>${food.food_name}</h3>
-          <p><strong>Quantity:</strong> ${food.serving_qty}</p>
+          <p><strong>Quantity:</strong> ${food.quantity}</p>
           <p><strong>Calories:</strong> ${food.calories} kcal</p>
           <p><strong>Protein:</strong> ${food.protein} g</p>
           <p><strong>Fat:</strong> ${food.fat} g</p>

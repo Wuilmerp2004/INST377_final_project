@@ -1,0 +1,37 @@
+# Ignore environment variables
+.env
+
+config.js
+# macOS system files
+.DS_Store
+
+# Node modules (if using Node.js or bundlers like Vite)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional cache folders
+.cache/
+dist/
+build/
+
+# Vite or Webpack outputs
+.vite/
+
+# VS Code settings (optional, if you use VS Code)
+.vscode/
+
+# OS-specific
+Thumbs.db
+Desktop.ini
+
+# Supabase auto-generated metadata
+supabase/.temp/
+supabase/migrations/
+
+# Ignore backups or local dev files
+*.local
+*.bak
