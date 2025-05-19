@@ -3,7 +3,7 @@ TerpFit:
 Project Description
 TerpFit is a  a website centered around fitness and it's  built to motivate and guide users on their health and wellness journey. It provides structured weekly workout plans with daily themes such as strength, cardio, mobility, and mindfulness. The goal is to inspire consistency, resilience, and a healthy lifestyle through a supportive web interface. 
 
-Vercel Deployment: inst-377-final-project-flax.vercel.app
+Vercel Deployment: https://inst-377-final-project-flax.vercel.app
 
 APIS:
 quotes: (https://api.api-ninjas.com/v1/quotes)
